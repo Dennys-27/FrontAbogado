@@ -11,16 +11,47 @@ export const MENU: MenuItem[] = [
     label: 'Mantenimientos',
     icon: 'ri-dashboard-2-line',
     subItems: [
-     
-    {
+
+      {
         id: 8,
         label: 'Clientes',
-        link: '/clientes',       
+        link: '/clientes',
         parentId: 2,
+      },
+      {
+        id: 9,
+        label: 'Consultorios',
+        link: '/consultorios',
+        parentId: 2,
+      },
+      {
+        id: 10,
+        label: 'Abogados',
+        link: '/abogados',
+        parentId: 2,
+      },
+
+      {
+        id: 11,
+        label: 'Casos',
+        link: '/casos',
+        parentId: 2,
+      },
+      {
+        id: 12,
+        label: 'Tareas',
+        link: '/tareas',
+        parentId: 2
+      },
+      {
+        id: 13,
+        label: 'Contactos',
+        link: '/contactosclientes',
+        parentId: 2
       }
     ]
   },
-{
+  {
     id: 8,
     label: 'MENUITEMS.APPS.TEXT',
     icon: 'bx bx-layer',
@@ -69,9 +100,9 @@ export const MENU: MenuItem[] = [
           }
         ]
       },
-       ]
-    }
- 
+    ]
+  }
+
   ,
 
   {

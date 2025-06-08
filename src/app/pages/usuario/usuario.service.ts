@@ -5,8 +5,8 @@ import { GlobalComponent } from 'src/app/global-component';
 const AUTH_API = GlobalComponent.API_URL;
 
 const httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  };
+  headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable({
   providedIn: 'root'
@@ -14,11 +14,11 @@ const httpOptions = {
 
 export class UsuarioService {
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
 
   }
-  Consultar():Observable<any> {
-    return this.http.get(AUTH_API+"Usuarios/usua", httpOptions);
-}
+  Consultar(): Observable<any> {
+    return this.http.get(AUTH_API + "Usuarios/usua", httpOptions);
+  }
 
 }

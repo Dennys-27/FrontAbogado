@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-xxl-10 col-xl-11 col-lg-12">
+
+        <!-- Grid de Consultorios -->
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <dx-data-grid #dataGrid id="gridContainer" [dataSource]="remoteDataSource" keyExpr="IdConsultorio"
+                    [showBorders]="true" [columnAutoWidth]="true" [columnHidingEnabled]="true" [wordWrapEnabled]="true"
+                    [rowAlternationEnabled]="true" [height]="'100%'">
+
+                    <!-- Filtros -->
+                    <dxo-filter-row [visible]="true"></dxo-filter-row>
+                    <dxo-header-filter [visible]="true"></dxo-header-filter>
+                    <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+
+                    <!-- Agrupación -->
+                    <dxo-group-panel [visible]="true"></dxo-group-panel>
+                    <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+                    <!-- Paginación -->
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+                    <dxo-pager [visible]="true" [showInfo]="true" [showNavigationButtons]="true"
+                        [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+
+                    <!-- Edición -->
+                    <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true">
+                        <dxo-popup title="Encuesta" [showTitle]="true" [width]="700" [height]="525"></dxo-popup>
+                    </dxo-editing>
+
+                    <!-- Desplazamiento -->
+                    <dxo-scrolling rowRenderingMode="virtual"></dxo-scrolling>
+
+                    <!-- Columnas -->
+                    <dxi-column caption="Acción" type="buttons" [buttons]="['edit']" alignment="left"></dxi-column>
+                    <dxi-column dataField="Nombre" caption="Razón Social" [width]="200"></dxi-column>
+                    <dxi-column dataField="Direccion" caption="Dirección" [width]="300"></dxi-column>
+                    <dxi-column dataField="Telefono" caption="Teléfono" [width]="150"></dxi-column>
+                    <dxi-column dataField="Estado" caption="Estado" [width]="200" [lookup]="{
+  dataSource: [
+    { id: true, nombre: 'Activo' },
+    { id: false, nombre: 'Inactivo' }
+  ],
+  valueExpr: 'id',
+  displayExpr: 'nombre'
+}">
+                    </dxi-column>
+
+
+                </dx-data-grid>
+            </div>
+        </div>
+
+        <!-- Subida de archivo CSV -->
+        <div class="card shadow-sm">
+            <div class="card-body" style="max-width: 450px; margin: 0 auto;">
+                <h5 class="card-title text-center mb-3">Subir archivo CSV</h5>
+
+                <div class="mb-3">
+                    <label for="csvFile" class="form-label fw-semibold">Selecciona un archivo CSV</label>
+                    <input type="file" id="csvFile" accept=".csv" (change)="onCSVSelected($event)" class="form-control"
+                        style="cursor: pointer;" />
+                </div>
+
+                <button type="button" class="btn btn-primary w-100" (click)="onUpload()" [disabled]="!selectedFile">
+                    Enviar
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>

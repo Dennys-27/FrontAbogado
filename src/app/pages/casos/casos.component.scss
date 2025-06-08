@@ -1,0 +1,41 @@
+// 🎨 Variables de colores
+$color-doc: #007bff;
+$color-pendiente: #ffc107;
+$color-realizada: #28a745;
+$color-nota: #6f42c1;
+$color-dark-text: #212529;
+$badge-radius: 999px;
+$badge-padding: 6px 12px;
+
+// 🧱 Mixin para badges
+@mixin badge-style($bg-color, $text-color: white) {
+  background-color: $bg-color;
+  color: $text-color;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: $badge-padding;
+  border-radius: $badge-radius;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  gap: 6px;
+
+  &.badge-doc {
+    @include badge-style($color-doc);
+  }
+
+  &.badge-pendiente {
+    @include badge-style($color-pendiente, $color-dark-text);
+  }
+
+  &.badge-realizada {
+    @include badge-style($color-realizada);
+  }
+
+  &.badge-nota {
+    @include badge-style($color-nota);
+  }
+}

@@ -1,0 +1,72 @@
+<div class="row justify-content-center">
+  <div class="col-xxl-10 col-xl-11 col-lg-12">
+
+    <!-- Grid de Consultorios -->
+    <div class="card shadow-sm mb-4">
+      <div class="card-body">
+        <dx-data-grid #dataGrid id="gridContainer" [dataSource]="remoteDataSource" keyExpr="IdCaso" [showBorders]="true"
+          [columnAutoWidth]="true" [columnHidingEnabled]="true" [wordWrapEnabled]="true" [rowAlternationEnabled]="true"
+          [height]="'100%'">
+
+          <!-- Filtros -->
+          <dxo-filter-row [visible]="true"></dxo-filter-row>
+          <dxo-header-filter [visible]="true"></dxo-header-filter>
+          <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+
+          <!-- Agrupación -->
+          <dxo-group-panel [visible]="true"></dxo-group-panel>
+          <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+          <!-- Paginación -->
+          <dxo-paging [pageSize]="10"></dxo-paging>
+          <dxo-pager [visible]="true" [showInfo]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+            [allowedPageSizes]="[10, 25, 50, 100]"></dxo-pager>
+
+          <!-- Edición -->
+          <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true">
+            <dxo-popup title="Encuesta" [showTitle]="true" [width]="700" [height]="525"></dxo-popup>
+          </dxo-editing>
+
+          <!-- Desplazamiento -->
+          <dxo-scrolling rowRenderingMode="virtual"></dxo-scrolling>
+
+          <!-- Columnas -->
+          <dxi-column caption="Acción" type="buttons" [buttons]="['edit']" alignment="left"></dxi-column>
+
+          <dxi-column dataField="Titulo" caption="Titulo" [width]="200"></dxi-column>
+          <dxi-column dataField="Descripcion" caption="Descripcion" [width]="300"></dxi-column>
+          <dxi-column dataField="FechaAsignacion" caption="Fecha Asignación" [width]="150" dataType="date"
+            format="dd/MM/yyyy">
+          </dxi-column>
+
+          <dxi-column dataField="FechaLimite" caption="Fecha Límite" [width]="150" dataType="date" format="dd/MM/yyyy">
+          </dxi-column>
+          <dxi-column dataField="TituloCaso" caption="TituloCaso" [width]="150"></dxi-column>
+          <dxi-column dataField="Estado" caption="Estado" [width]="200" [lookup]="{
+  dataSource: [
+    { id: 'Abierto', nombre: 'Activo' },
+    { id: 'Cerrado', nombre: 'Inactivo' }
+  ],
+  valueExpr: 'id',
+  displayExpr: 'nombre'
+}">
+          </dxi-column>
+          <dxi-column dataField="IdCaso" caption="Caso" [width]="200" [lookup]="{
+                                    dataSource: casoDatasource,
+                                    valueExpr: 'IdCaso',
+                                    displayExpr: 'CodigoCaso'
+                                }">
+          </dxi-column>
+          <dxi-column dataField="IdUsuario" caption="Usuario" [width]="200" [lookup]="{
+                                    dataSource: casoDatasource,
+                                    valueExpr: 'IdUsuario',
+                                    displayExpr: 'NombreUsuario'
+                                }">
+          </dxi-column>
+
+        </dx-data-grid>
+      </div>
+    </div>
+
+  </div>
+</div>

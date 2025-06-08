@@ -1,0 +1,128 @@
+<!-- Panel de Filtros -->
+<div class="card mb-3 p-3">
+  <div class="row">
+    <div class="col-md-3">
+      <dx-select-box [(value)]="selectedCaso" [items]="caso" displayExpr="Nombre" valueExpr="IdCaso"
+        placeholder="Seleccione caso">
+      </dx-select-box>
+    </div>
+
+    <div class="col-md-3">
+      <dx-select-box [(value)]="selectedAbogado" [items]="abogados" displayExpr="Nombre" valueExpr="IdAbogado"
+        placeholder="Seleccione abogado">
+      </dx-select-box>
+    </div>
+
+    <div class="col-md-2">
+      <dx-date-box [(value)]="fechaInicio" type="date" placeholder="Fecha inicio">
+      </dx-date-box>
+    </div>
+
+    <div class="col-md-2">
+      <dx-date-box [(value)]="fechaFin" type="date" placeholder="Fecha fin">
+      </dx-date-box>
+    </div>
+
+    <div class="col-md-2 d-flex align-items-end">
+      <dx-button text="Aplicar Filtros" icon="search" type="default" stylingMode="contained"
+        (onClick)="aplicarFiltros()">
+      </dx-button>
+    </div>
+  </div>
+
+  <div class="row mt-3">
+    <div class="col-md-6">
+      <dx-text-box [(value)]="busqueda" placeholder="Buscar...">
+      </dx-text-box>
+    </div>
+  </div>
+</div>
+
+<!-- DataGrid -->
+<dx-data-grid #dataGrid [dataSource]="remoteDataSource" [showBorders]="true" [columnAutoWidth]="true"
+  [columnHidingEnabled]="true" [wordWrapEnabled]="true" [rowAlternationEnabled]="true" height="100%">
+
+  <dxo-filter-row [visible]="true"></dxo-filter-row>
+  <dxo-header-filter [visible]="true"></dxo-header-filter>
+  <dxo-group-panel [visible]="true"></dxo-group-panel>
+  <dxo-search-panel [visible]="true" [highlightCaseSensitive]="true"></dxo-search-panel>
+  <dxo-grouping [autoExpandAll]="false"></dxo-grouping>
+
+  <dxo-paging [pageSize]="10"></dxo-paging>
+  <dxo-pager [showInfo]="true" [showNavigationButtons]="true" [showPageSizeSelector]="true"
+    [allowedPageSizes]="[10, 25, 50]">
+  </dxo-pager>
+
+  <dxo-adaptive-column [enabled]="true"></dxo-adaptive-column>
+  <dxo-scrolling rowRenderingMode="virtual"></dxo-scrolling>
+
+  <dxo-editing mode="popup" [allowUpdating]="true" [allowAdding]="true">
+    <dxo-popup title="Editar Cliente" [showTitle]="true" [width]="700" [height]="525"></dxo-popup>
+  </dxo-editing>
+
+  <!-- Columnas -->
+  <dxi-column caption="Acción" type="buttons" [buttons]="['edit']" alignment="left">
+  </dxi-column>
+
+  <dxi-column dataField="CodigoCaso" caption="Nombre" [width]="200"></dxi-column>
+  <dxi-column dataField="Titulo" caption="Titulo" [width]="150"></dxi-column>
+  <dxi-column dataField="Descripcion" caption="Descripcion" [width]="200"></dxi-column>
+  <dxi-column dataField="FechaInicio" caption="Email" [width]="200"></dxi-column>
+  <dxi-column dataField="FechaFin" caption="Teléfono" [width]="200"></dxi-column>
+
+  <dxi-column dataField="Estado" caption="Estado" [width]="150" [lookup]="{
+      dataSource: [
+        { id: true, nombre: 'Activo' },
+        { id: false, nombre: 'Inactivo' }
+      ],
+      valueExpr: 'id',
+      displayExpr: 'nombre'
+    }">
+  </dxi-column>
+
+  <dxi-column dataField="Cliente" caption="Cliente" [width]="300"></dxi-column>
+  <dxi-column dataField="Consultorio" caption="Consultorio" [width]="300"></dxi-column>
+  <!-- Total Documentos -->
+  <dxi-column dataField="TotalDocumentos" caption="Documentos" [width]="180">
+    <ng-template let-data="data" dxTemplate="cellTemplate">
+      <a [routerLink]="['/documentos', data.IdCaso]">
+        <span class="badge badge-doc">
+          <i class="fas fa-file-alt"></i> {{ data.TotalDocumentos }}
+        </span>
+      </a>
+    </ng-template>
+  </dxi-column>
+
+  <!-- Tareas Pendientes -->
+  <dxi-column dataField="TareasPendientes" caption="Pendientes" [width]="180">
+    <ng-template let-data="data" dxTemplate="cellTemplate">
+      <a [routerLink]="['/tareas/pendientes', data.IdCaso]">
+        <span class="badge badge-pendiente">
+          <i class="fas fa-clock"></i> {{ data.TareasPendientes }}
+        </span>
+      </a>
+    </ng-template>
+  </dxi-column>
+
+  <!-- Tareas Realizadas -->
+  <dxi-column dataField="TareasRealizadas" caption="Realizadas" [width]="180">
+    <ng-template let-data="data" dxTemplate="cellTemplate">
+      <a [routerLink]="['/tareas/realizadas', data.IdCaso]">
+        <span class="badge badge-realizada">
+          <i class="fas fa-check-circle"></i> {{ data.TareasRealizadas }}
+        </span>
+      </a>
+    </ng-template>
+  </dxi-column>
+
+  <!-- Notas Internas -->
+  <dxi-column dataField="NotasInternas" caption="Notas Internas" [width]="180">
+    <ng-template let-data="data" dxTemplate="cellTemplate">
+      <a [routerLink]="['/notas', data.IdCaso]">
+        <span class="badge badge-nota">
+          <i class="fas fa-sticky-note"></i> {{ data.NotasInternas }}
+        </span>
+      </a>
+    </ng-template>
+  </dxi-column>
+</dx-data-grid>

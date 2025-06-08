@@ -4,23 +4,17 @@
 
 <div class="row justify-content-center">
   <div class="col-xxl-9">
-      <div class="card">
+    <div class="card">
 
-               <dx-data-grid
-                id="gridContainer"
-                [dataSource]="customers"
-                keyExpr="usuId"
-                [showBorders]="true"
-                [height] = "500"
-              ><dxo-filter-row [visible]="true"></dxo-filter-row>
-              <dxo-header-filter [visible]="true"></dxo-header-filter>
-              <dxo-group-panel [visible]="true"></dxo-group-panel>
-              <dxo-scrolling mode="virtual"></dxo-scrolling>
-              <dxi-column dataField="usuId" caption="nombre"></dxi-column>
-                <dxi-column dataField="usuNombre" caption="nombre"></dxi-column>
-              </dx-data-grid>
+      <dx-data-grid id="gridContainer" [dataSource]="customers" keyExpr="usuId" [showBorders]="true"
+        [height]="500"><dxo-filter-row [visible]="true"></dxo-filter-row>
+        <dxo-header-filter [visible]="true"></dxo-header-filter>
+        <dxo-group-panel [visible]="true"></dxo-group-panel>
+        <dxo-scrolling mode="virtual"></dxo-scrolling>
+        <dxi-column dataField="usuId" caption="nombre"></dxi-column>
+        <dxi-column dataField="usuNombre" caption="nombre"></dxi-column>
+      </dx-data-grid>
 
-            </div>
-          </div><!--end col-->
-        </div><!--end row-->
-        
+    </div>
+  </div><!--end col-->
+</div><!--end row-->

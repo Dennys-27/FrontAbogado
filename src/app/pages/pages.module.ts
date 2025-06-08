@@ -50,8 +50,11 @@ import { NotificacionesComponent } from './notificaciones/notificaciones.compone
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import { ATSComponent } from './ats/ats.component';
 import { ClientesComponent } from './clientes/clientes.component';
-
-
+import { ConsultoriosComponent } from './consultorios/consultorios.component';
+import { AbogadosComponent } from './abogados/abogados.component';
+import { CasosComponent } from './casos/casos.component';
+import { TareasComponent } from './tareas/tareas.component';
+import { ContactoclientesComponent } from './contactoclientes/contactoclientes.component';
 
 
 @NgModule({
@@ -64,8 +67,14 @@ import { ClientesComponent } from './clientes/clientes.component';
     ATSComponent,
     ConsultaComponent,
     ContrasenaComponent,
-    MisdatosComponent,ClientesComponent,
+    MisdatosComponent,
+    ClientesComponent,
+    ConsultoriosComponent,
     NotificacionesComponent,
+    AbogadosComponent,
+    CasosComponent,
+    TareasComponent,
+    ContactoclientesComponent
   ],
   imports: [
     CommonModule,PdfViewerModule,DxDataGridModule,DxSelectBoxModule,DxDateBoxModule,

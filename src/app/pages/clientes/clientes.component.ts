@@ -37,7 +37,8 @@ export class ClientesComponent {
         // }
       },
       key: 'IdCliente',
-      loadUrl: serviceUrl + '/Get?id='+this.user.IdConsultorio,
+      /*  loadUrl: serviceUrl + '/Get?id='+this.user.IdConsultorio, */
+      loadUrl: serviceUrl + '/Get?id=1',
       insertUrl: serviceUrl + '/Post',
       updateUrl: serviceUrl + '/Put',
       deleteUrl: serviceUrl + '/Delete'
