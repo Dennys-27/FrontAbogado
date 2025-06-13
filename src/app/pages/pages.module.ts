@@ -55,6 +55,9 @@ import { AbogadosComponent } from './abogados/abogados.component';
 import { CasosComponent } from './casos/casos.component';
 import { TareasComponent } from './tareas/tareas.component';
 import { ContactoclientesComponent } from './contactoclientes/contactoclientes.component';
+import { DocumentosComponent } from './documentos/documentos.component';
+
+import { AuditoriasComponent } from './auditorias/auditorias.component';
 
 
 @NgModule({
@@ -74,7 +77,10 @@ import { ContactoclientesComponent } from './contactoclientes/contactoclientes.c
     AbogadosComponent,
     CasosComponent,
     TareasComponent,
-    ContactoclientesComponent
+    ContactoclientesComponent,
+    DocumentosComponent,
+    AuditoriasComponent
+
   ],
   imports: [
     CommonModule,PdfViewerModule,DxDataGridModule,DxSelectBoxModule,DxDateBoxModule,

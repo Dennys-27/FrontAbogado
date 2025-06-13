@@ -11,7 +11,7 @@
   [height]="'100%'"
                   id="gridContainer"
                   [dataSource]="remoteDataSource"
-                  keyExpr="IdDocumento"
+                  keyExpr="IdAutoria"
                 ><dxo-filter-row [visible]="true"></dxo-filter-row>
                 <dxo-header-filter [visible]="true"></dxo-header-filter>
                 <dxo-group-panel [visible]="true"></dxo-group-panel>
@@ -58,10 +58,12 @@
                 </dxi-column>
       
 
-                <dxi-column dataField="NombreArchivo" caption="Razon Social" [width]="200" ></dxi-column>
-                <dxi-column dataField="TipoDocumento" caption="Ruc/Cedula" [width]="150"></dxi-column>
-                <dxi-column dataField="RutaArchivo" caption="Representante Legal" [width]="200"></dxi-column>
-                <dxi-column dataField="FechaSubida" caption="Correo" [width]="200"></dxi-column>
+                <dxi-column dataField="Usuario" caption="Usuario" [width]="200" ></dxi-column>
+                <dxi-column dataField="Fecha" caption="Fecha" [width]="150"></dxi-column>
+                <dxi-column dataField="Accion" caption="Accion" [width]="200"></dxi-column>
+                <dxi-column dataField="TablaAfectada" caption="TablaAfectada" [width]="200"></dxi-column>
+                <dxi-column dataField="ClaveRegistro" caption="ClaveRegistro"  [width]="200"></dxi-column>
+                <dxi-column dataField="DetalleCambio" caption="DetalleCambio" [width]="300"></dxi-column>
       
                 </dx-data-grid>
   
